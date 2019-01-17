@@ -1,4 +1,4 @@
-# vuevant
+# vue vant-ui
 
 > A Vue.js project
 
