@@ -13,12 +13,23 @@ export default {
   }),
   created() {
     // 请求图片
-    this.$axios.get("/api/getlunbo").then(res => {
+    this.$axios.get("api/getlunbo").then(res => {
       if (res.data.status === 0) {
         this.img = res.data.message;
         // console.log(this.img);
       }
     });
+    
+    // es7方法
+    // async function aa() {
+    //   const res = await this.$axios.get("/api/getlunbo") 
+    //   if (res.data.status === 0) {
+    //     this.img = res.data.message
+    //   }else {
+        
+    //   }
+    // }
+    // aa()
   }
 };
 </script>
