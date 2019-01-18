@@ -6,7 +6,7 @@
     <van-button type="danger" size="large">发表评论</van-button>
     <div class="cmt-list">
       <div class="cmt-item" v-for="(item,index) in comments" :key="index">
-        <div class="cmt-title">第{{index + 1}}楼&nbsp;&nbsp;用户：&nbsp;&nbsp;发表时间：{{item.add_time}}</div>
+        <div class="cmt-title">第{{index + 1}}楼&nbsp;&nbsp;用户：&nbsp;&nbsp;发表时间：{{item.add_time | datefmt}}</div>
         <div class="cmt-body">{{ item.content === 'undefined' ? '此用户很懒，嘛都没说': item.content }}</div>
       </div>
     </div>

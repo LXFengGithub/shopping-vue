@@ -3,7 +3,7 @@
     <router-link v-for="(item, index) in newsList" :key="index" :to="'/home/newInfo/' + item.id"  >
       <van-card
         :key="index"
-        :price="item.add_time"
+        :price="item.add_time | datefmt"
         currency
         :desc="item.zhaiyao"
         :title="item.title"

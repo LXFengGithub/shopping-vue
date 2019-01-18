@@ -21,9 +21,9 @@ Vue.prototype.$axios = axios
 // 导入格式化事件的插件
 import moment from 'moment'
 // 定义全局过滤器
-// Vue.filler('datefmt', (data, arg = 'YYYY-MM-DD hh:mm:ss') => {
-//   return moment(data).format(arg)
-// })
+Vue.filter('datefmt', (data, arg = 'YYYY-MM-DD hh:mm:ss') => {
+  return moment(data).format(arg)
+})
 
 
 Vue.use(Vant);
