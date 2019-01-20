@@ -18,8 +18,8 @@ export default {
   data: () => ({
       icon: [
       { imgurl: require("./images/menu1.png"), name: '新闻资讯', routers: '/home/newList'},
-      { imgurl: require("./images/menu2.png"), name: '图片分享', routers: '/home/newList'},
-      { imgurl: require("./images/menu3.png"), name: '商品购买', routers: '/home/newList'},
+      { imgurl: require("./images/menu2.png"), name: '图片分享', routers: '/home/photosList'},
+      { imgurl: require("./images/menu3.png"), name: '商品购买', routers: '/home/goodList'},
       { imgurl: require("./images/menu4.png"), name: '留言反馈', routers: '/home/newList'},
       { imgurl: require("./images/menu5.png"), name: '视频专区', routers: '/home/newList'},
       { imgurl: require("./images/menu6.png"), name: '联系我们', routers: '/home/newList'},

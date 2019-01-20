@@ -9,8 +9,10 @@ Vue.use(Animate)
 
 Vue.config.productionTip = false
 
-import Vant from 'vant'
+import Vant,{Lazyload} from 'vant'
 import 'vant/lib/index.css'
+Vue.use(Vant)
+   .use(Lazyload)
 
 // 引入axios, 挂载到 Vue原型上
 import axios from 'axios'
@@ -26,7 +28,6 @@ Vue.filter('datefmt', (data, arg = 'YYYY-MM-DD hh:mm:ss') => {
 })
 
 
-Vue.use(Vant);
 
 /* eslint-disable no-new */
 new Vue({

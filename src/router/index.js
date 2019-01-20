@@ -6,6 +6,9 @@ import Search from '@/components/search/index'
 import Shopping from '@/components/shopping/index'
 import NewList from '@/components/home/news/NewList'
 import NewInfo from '@/components/home/news/NewInfo'
+import PhotosList from '@/components/home/photos/PhotosList'
+import PhotosInfo from '@/components/home/photos/PhotosInfo'
+import GoodList from '@/components/home/goods/GoodList'
 
 Vue.use(Router)
 
@@ -25,6 +28,15 @@ export default new Router({
     path: '/home/newInfo/:id',
     name: 'newInfo',
     component: NewInfo
+  }, {
+    path: '/home/photosList',
+    component: PhotosList
+  }, {
+    path: '/home/photosInfo/:id',
+    component: PhotosInfo
+  }, {
+    path: '/home/goodList',
+    component: GoodList
   }, {
     path: '/user',
     name: 'user',

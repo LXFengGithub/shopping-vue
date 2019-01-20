@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Comment from './Comment'
+import Comment from '@/components/subcomponents/Comment'
 export default {
   data: () => ({
     id: "",
