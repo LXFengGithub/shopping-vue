@@ -63,6 +63,7 @@ export default {
      */
     handleImage(startPosition) {
       let images = [];
+      console.log(startPosition)
       this.list.forEach(item => {
         if (item.src != null) {
           images.push(item.src);
