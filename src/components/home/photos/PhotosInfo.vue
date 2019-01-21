@@ -59,7 +59,10 @@ export default {
     },
     /**
      * 预览图片
-     * startPosition 代表传进来的索引，图片的预览起始位置
+     * startPosition 代表传进来的索引，利用索引。遍历拿到的数据中的img push到 定义的images数组.
+     * 
+     * ImagePreview 是 vant提供的一个预览图片的方法
+     * 
      */
     handleImage(startPosition) {
       let images = [];
