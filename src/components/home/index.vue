@@ -1,21 +1,31 @@
 <template>
   <div class="m-home">
-    <Carousel />
+    <Swipe :img="img"/>
     <m-nav />
     <router-view />
   </div>
 </template>
 
 <script>
-import { Toast } from "vant";
+import { Toast } from "vant"
 import MNav from './Nav'
-import Carousel from './Carousel'
+import Swipe from '@/components/subcomponents/Swipe'
 
 export default {
-  data: () => ({}),
+  data: () => ({
+    img: {}
+  }),
+  created() {
+    // 请求图片
+    this.$axios.get("api/getlunbo").then(res => {
+      if (res.data.status === 0) {
+        this.img = res.data.message;
+      }
+    });
+  },
   components: {
     MNav,
-    Carousel
+    Swipe
   }
 };
 </script>

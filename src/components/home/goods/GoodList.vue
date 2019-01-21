@@ -1,65 +1,68 @@
 <template>
   <div class="goodList">
-    <div class="good-item">
-      <img src="./1.jpg" alt="">
-      <h2 class="title">华为荣耀</h2>
+    <router-link
+      class="good-item"
+      v-for="item in goods"
+      :key="item.id"
+      :to="'/home/goodInfo/' + item.thumb_id"
+    >
+      <!-- @click="goDetail(item.id)" -->
+      <img :src="item.img_url" alt>
+      <h2 class="title">{{item.zhaiyao}}</h2>
       <div class="info">
-        <p class="price"> 
-          <span class="now">￥999</span>
-          <span class="old">￥1280</span>
+        <p class="price">
+          <span class="now">￥{{item.sell_price}}</span>
+          <span class="old">￥{{item.market_price}}</span>
         </p>
         <p class="sell">
           <span>热买中</span>
-          <span>剩余 <i>1</i> 件 </span>
+          <span>
+            剩余
+            <i>{{item.stock_quantity}}</i> 件
+          </span>
         </p>
       </div>
-    </div>
-    <div class="good-item">
-      <img src="./1.jpg" alt="">
-      <h2 class="title">华为荣耀</h2>
-      <div class="info">
-        <p class="price"> 
-          <span class="now">￥999</span>
-          <span class="old">￥1280</span>
-        </p>
-        <p class="sell">
-          <span>热买中</span>
-          <span>剩余 <i>1</i> 件 </span>
-        </p>
-      </div>
-    </div>
-    <div class="good-item">
-      <img src="./1.jpg" alt="">
-      <h2 class="title">华为荣耀</h2>
-      <div class="info">
-        <p class="price"> 
-          <span class="now">￥999</span>
-          <span class="old">￥1280</span>
-        </p>
-        <p class="sell">
-          <span>热买中</span>
-          <span>剩余 <i>1</i> 件 </span>
-        </p>
-      </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
+    pageindex: 1,
+    limit: 3,
+    max: 10,
+    goods: []
+  }),
+  created() {
+    this.getGoods();
+  },
+  methods: {
+    async getGoods() {
+      const {
+        data: { status, message }
+      } = await this.$axios.get("/api/getgoods?pageindex=" + this.pageindex);
+      if (!status) {
+        this.goods = message;
+        console.log(this.goods);
+      }
+    },
 
-    })
+    // goDetail(id) {
+    //   console.log(id);
+    //   this.$router.push({ name: 'goodinfo', params: { id } });
+    // }
+  }
 };
 </script>
 
 <style lang="scss">
-.goodList{
+.goodList {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 7px;
-  .good-item{
+  .good-item {
     width: 48%;
     border: 1px solid #ccc;
     box-shadow: 0 0 7px #ccc;
@@ -69,10 +72,10 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     min-height: 283px;
-    img{
+    img {
       width: 100%;
     }
-    .title{
+    .title {
       font-size: 14px;
     }
   }

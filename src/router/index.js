@@ -9,6 +9,9 @@ import NewInfo from '@/components/home/news/NewInfo'
 import PhotosList from '@/components/home/photos/PhotosList'
 import PhotosInfo from '@/components/home/photos/PhotosInfo'
 import GoodList from '@/components/home/goods/GoodList'
+import GoodInfo from '@/components/home/goods/GoodInfo'
+
+
 
 Vue.use(Router)
 
@@ -36,7 +39,12 @@ export default new Router({
     component: PhotosInfo
   }, {
     path: '/home/goodList',
+    name: 'goodsist',
     component: GoodList
+  }, {
+    path: '/home/goodInfo/:id',
+    name: 'goodinfo',
+    component: GoodInfo
   }, {
     path: '/user',
     name: 'user',

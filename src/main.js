@@ -9,10 +9,15 @@ Vue.use(Animate)
 
 Vue.config.productionTip = false
 
-import Vant,{Lazyload} from 'vant'
+import Vant,{Lazyload,GoodsAction,
+  GoodsActionBigBtn,
+  GoodsActionMiniBtn} from 'vant'
 import 'vant/lib/index.css'
 Vue.use(Vant)
    .use(Lazyload)
+   .use(GoodsAction)
+   .use(GoodsActionBigBtn)
+   .use(GoodsActionMiniBtn);
 
 // 引入axios, 挂载到 Vue原型上
 import axios from 'axios'
