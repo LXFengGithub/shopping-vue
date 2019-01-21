@@ -9,6 +9,7 @@ Vue.use(Animate)
 
 Vue.config.productionTip = false
 
+/* 引入 ui vant框架 */
 import Vant,{Lazyload,GoodsAction,
   GoodsActionBigBtn,
   GoodsActionMiniBtn} from 'vant'
@@ -32,12 +33,25 @@ Vue.filter('datefmt', (data, arg = 'YYYY-MM-DD hh:mm:ss') => {
   return moment(data).format(arg)
 })
 
-
+/* 使用 vuex 对 购物车的数量进行管理 */
+import Vuex from 'vuex'
+Vue.use(Vuex)
+var store = new Vuex.Store({
+  state: {
+    info: 0
+  },
+  getters: {
+  },
+  mutations: {
+   
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store
 })

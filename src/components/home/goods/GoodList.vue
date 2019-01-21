@@ -1,18 +1,20 @@
 <template>
   <div class="goodList">
-    <router-link
+    <div
       class="good-item"
-      v-for="item in goods"
-      :key="item.id"
-      :to="'/home/goodInfo/' + item.thumb_id"
+      v-for="(item, index) in goods"
+      :key="index"
+      @click="goDetail(item.thumb_id)"
     >
-      <!-- @click="goDetail(item.id)" -->
+      <!-- :to="'/home/goodInfo/' + item.thumb_id" -->
       <img :src="item.img_url" alt>
       <h2 class="title">{{item.zhaiyao}}</h2>
       <div class="info">
         <p class="price">
           <span class="now">￥{{item.sell_price}}</span>
-          <span class="old">￥{{item.market_price}}</span>
+          <span class="old">￥
+            <del>{{item.market_price}}</del>
+          </span>
         </p>
         <p class="sell">
           <span>热买中</span>
@@ -22,7 +24,7 @@
           </span>
         </p>
       </div>
-    </router-link>
+    </div>
   </div>
 </template>
 
@@ -41,32 +43,36 @@ export default {
     async getGoods() {
       const {
         data: { status, message }
-      } = await this.$axios.get("/api/getgoods?pageindex=" + this.pageindex);
+      } = await this.$axios.get(`/api/getgoods?pageindex=${this.pageindex}&limit=${this.limit}`);
       if (!status) {
         this.goods = message;
         console.log(this.goods);
       }
     },
 
-    // goDetail(id) {
-    //   console.log(id);
-    //   this.$router.push({ name: 'goodinfo', params: { id } });
-    // }
+    goDetail(id) {
+      console.log(id);
+      this.$router.push("/home/goodInfo/" + id)
+    }
   }
 };
 </script>
 
 <style lang="scss">
 .goodList {
+  i {
+    font-style: normal;
+  }
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 7px;
   .good-item {
-    width: 48%;
+    width: 47%;
     border: 1px solid #ccc;
     box-shadow: 0 0 7px #ccc;
-    padding: 2px;
+    color: #333;
+    padding: 3px;
     margin: 2px 0;
     display: flex;
     flex-direction: column;
@@ -77,6 +83,26 @@ export default {
     }
     .title {
       font-size: 14px;
+    }
+    .info {
+      background-color: #eee;
+      padding: 0 4px;
+      .price {
+        .now {
+          color: red;
+          font-weight: 600;
+        }
+        .old {
+          font-size: 12px;
+          color: #888;
+        }
+      }
+      .sell {
+        font-size: 13px;
+        color: #666;
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 }

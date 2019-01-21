@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <van-nav-bar title="彩 旗 飘 飘" left-text="返回" right-text="设置" left-arrow @click-left="onClickLeft" @click-right="onClickRight"/>
+    <van-nav-bar title="彩 旗 飘 飘" left-text="返回" right-text="" left-arrow @click-left="onClickLeft" @click-right="onClickRight"/>
 
     <transition enter-active-class="fadeInRight animated" leave-active-class="fadeOutLeft animated">
-      <router-view/>      
+      <router-view/>     
     </transition>
 
     <van-tabbar v-model="active">
       <van-tabbar-item to="/" icon="home-o">首页</van-tabbar-item>
       <van-tabbar-item to="/user" icon="user-circle-o" info="">会员</van-tabbar-item>
-      <van-tabbar-item to="/shopping" icon="shopping-cart-o" info="0" id="cart">购物车</van-tabbar-item>
+      <van-tabbar-item to="/shopping" icon="shopping-cart-o" :info="this.$store.state.info" id="cart">购物车</van-tabbar-item>
       <van-tabbar-item to="/search" icon="search" dot>搜索</van-tabbar-item>
     </van-tabbar>
   </div>
@@ -27,9 +27,8 @@ export default {
     };
   },
   methods: {
-    onClickLeft() {
-      
-      Toast("返回中...");
+    onClickLeft() { /* 返回上一页 */
+      this.$router.go(-1)
     },
     onClickRight() {
       Toast("按钮");
