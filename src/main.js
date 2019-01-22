@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/index'
 
 import Animate from 'animate.css'
 Vue.use(Animate)
@@ -33,19 +34,7 @@ Vue.filter('datefmt', (data, arg = 'YYYY-MM-DD hh:mm:ss') => {
   return moment(data).format(arg)
 })
 
-/* 使用 vuex 对 购物车的数量进行管理 */
-import Vuex from 'vuex'
-Vue.use(Vuex)
-var store = new Vuex.Store({
-  state: {
-    info: 0
-  },
-  getters: {
-  },
-  mutations: {
-   
-  }
-})
+
 
 /* eslint-disable no-new */
 new Vue({

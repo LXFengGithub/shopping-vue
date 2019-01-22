@@ -15,7 +15,8 @@
         <i>1980</i>
       </span>
     </p>
-    <div class="numb">购买数量：
+    <div class="numb">
+      购买数量：
       <van-stepper class="numbbut" v-model="value"/>
     </div>
     <van-goods-action style="position:unset">
@@ -57,6 +58,10 @@ export default {
     onClickBigBtn() {
       this.flag=!this.flag
       this.Mdisabled = true
+      setTimeout(()=>{
+        this.Mdisabled = false
+      },700)
+      this.$store.commit("add")
     },
     getBound() { /* 获取小球在页面中的位置 */
       // 获取小球在页面中的位置
@@ -85,9 +90,7 @@ export default {
     afterEnter(el) {
       this.flag = !this.flag
 
-      setTimeout(()=>{
-        this.Mdisabled = false
-      },700)
+      
       
     }
   },
@@ -132,8 +135,11 @@ export default {
   }
   .numb{
     margin: 5px 0;
+    height: 38px;
+    line-height: 38px;
     .numbbut{
-      display: inline-block
+      display: inline-block;
+      vertical-align: middle;
     }
   }
 }

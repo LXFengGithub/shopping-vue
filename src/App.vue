@@ -9,7 +9,7 @@
     <van-tabbar v-model="active">
       <van-tabbar-item to="/" icon="home-o">首页</van-tabbar-item>
       <van-tabbar-item to="/user" icon="user-circle-o" info="">会员</van-tabbar-item>
-      <van-tabbar-item to="/shopping" icon="shopping-cart-o" :info="this.$store.state.info" id="cart">购物车</van-tabbar-item>
+      <van-tabbar-item to="/shopping" icon="shopping-cart-o" :info="this.$store.state.infoAdd" id="cart">购物车</van-tabbar-item>
       <van-tabbar-item to="/search" icon="search" dot>搜索</van-tabbar-item>
     </van-tabbar>
   </div>
