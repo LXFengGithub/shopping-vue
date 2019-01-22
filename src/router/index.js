@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/home/index'
 import User from '@/components/user/index'
 import Search from '@/components/search/index'
-import Shopping from '@/components/shopping/index'
+import Cart from '@/components/cart/index'
 import NewList from '@/components/home/news/NewList'
 import NewInfo from '@/components/home/news/NewInfo'
 import PhotosList from '@/components/home/photos/PhotosList'
@@ -54,8 +54,8 @@ export default new Router({
     name: 'search',
     component: Search
   }, {
-    path: '/shopping',
-    name: 'shopping',
-    component: Shopping
+    path: '/cart',
+    name: 'cart',
+    component: Cart
   }]
 })

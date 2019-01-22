@@ -19,7 +19,7 @@
       购买数量：
       <van-stepper class="numbbut" v-model="value"/>
     </div>
-    <van-goods-action style="position:unset">
+    <van-goods-action>
       <van-goods-action-big-btn text="加入购物车" :disabled='Mdisabled' @click="onClickBigBtn"/>
       <van-goods-action-big-btn primary text="立即购买"/>
     </van-goods-action>
@@ -32,7 +32,7 @@ import Swipe from "@/components/subcomponents/Swipe"
 export default {
   data: () => ({
     id: "",
-    value: 1,
+    value: 0,
     flag: false,
     img: {},
     info: [],
@@ -54,15 +54,27 @@ export default {
         this.img = message
       }
     },
-
+    
     onClickBigBtn() {
+       var goodinfo = { /* localStorage需要储存的信息 */
+        id: this.id,
+        count: this.value,
+        price: 1980,
+        selected: true,
+        timer: null
+      }
+      this.$store.commit("add", goodinfo)
+
       this.flag=!this.flag
-      this.Mdisabled = true
-      setTimeout(()=>{
+      this.Mdisabled = true  /* 按钮禁用 */
+
+      setTimeout(()=>{   
         this.Mdisabled = false
       },700)
-      this.$store.commit("add")
+    
+     
     },
+
     getBound() { /* 获取小球在页面中的位置 */
       // 获取小球在页面中的位置
       const ballPosition = this.$refs.sell.getBoundingClientRect()
@@ -105,6 +117,9 @@ export default {
 .goodsInfo {
   height: 800px;
   margin: 7px;
+  .van-goods-action{
+    bottom: 50px;
+  }
   .ball {
     position: absolute;
     width: 15px;

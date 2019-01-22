@@ -13,13 +13,14 @@ Vue.config.productionTip = false
 /* 引入 ui vant框架 */
 import Vant,{Lazyload,GoodsAction,
   GoodsActionBigBtn,
-  GoodsActionMiniBtn} from 'vant'
+  GoodsActionMiniBtn, SubmitBar} from 'vant'
 import 'vant/lib/index.css'
 Vue.use(Vant)
    .use(Lazyload)
    .use(GoodsAction)
    .use(GoodsActionBigBtn)
-   .use(GoodsActionMiniBtn);
+   .use(GoodsActionMiniBtn)
+   .use(SubmitBar)
 
 // 引入axios, 挂载到 Vue原型上
 import axios from 'axios'
